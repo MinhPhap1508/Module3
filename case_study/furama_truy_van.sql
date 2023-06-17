@@ -9,3 +9,26 @@ and length(employee_name) <15;
 select *
 from customer
 where (address like '%Đà Nẵng' or address like '%Quảng Trị') and datediff(now(),birthday)/365>18 and datediff(now(),birthday)/365 < 50;
+-- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần.
+ -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng. 
+-- Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
+select c.id_customer,c.customer_name,ct.customer_type_name, count(*) number_bookings
+from customer c
+join customer_type ct on c.id_customer_type=ct.id_customer_type
+join contract on c.id_customer=contract.id_customer
+where ct.customer_type_name='Diamond'
+group by contract.id_customer
+order by number_bookings;
+-- 5.	Hiển thị ma_khach_hang, ho_ten, ten_loai_khach, ma_hop_dong, ten_dich_vu, ngay_lam_hop_dong, ngay_ket_thuc, tong_tien
+ -- (Với tổng tiền được tính theo công thức như sau: Chi Phí Thuê + Số Lượng * Giá, với Số Lượng và
+ -- Giá là từ bảng dich_vu_di_kem, hop_dong_chi_tiet)
+ -- cho tất cả các khách hàng đã từng đặt phòng. 
+-- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
+select c.id_customer,customer_name,customer_type_name,contract.id_contract,s.service_name,contract.contract_date,contract.contract_end_date,
+s.rental_costs+dc.quantity*sf.price as `total_price`
+from customer c
+left join customer_type ct on c.id_customer_type=ct.id_customer_type
+left join contract on c.id_customer=contract.id_customer
+left join service s on contract.id_service=s.id_service
+left join detail_contract dc on contract.id_contract=dc.id_contract
+left join service_free sf on dc.id_service_free=sf.id_service_free;

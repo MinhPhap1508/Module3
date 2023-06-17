@@ -25,5 +25,9 @@ where o.customer_id is null;
 -- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn 
 -- (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn.
  -- Giá bán của từng loại được tính = odQTY*pPrice)
- 
+ select o.oder_id, o.oder_date, sum(od.order_quantity*p.product_price) order_total_price
+from order_detail od
+join `order` o on od.order_id=o.oder_id
+join product p on od.product_id=p.product_id
+group by o.oder_id,o.oder_date;
  

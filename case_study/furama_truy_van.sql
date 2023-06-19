@@ -32,3 +32,54 @@ left join contract on c.id_customer=contract.id_customer
 left join service s on contract.id_service=s.id_service
 left join detail_contract dc on contract.id_contract=dc.id_contract
 left join service_free sf on dc.id_service_free=sf.id_service_free;
+-- 6.Hiển thị ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue,
+-- ten_loai_dich_vu của tất cả các loại dịch vụ chưa từng được khách hàng 
+-- thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3). 
+
+select s.id_service, s.service_name, s.area_service, s.rental_costs, ts.type_service_name
+from contract ctr
+join service s on ctr.id_service=s.id_service
+join type_service ts on s.id_type_service=ts.id_type_service
+where s.id_service not in(
+select id_service
+from contract
+where (month(contract_date)=1 or month(contract_date)=2 or month(contract_date)=3) and year(contract_date)=2021)
+group by s.id_service;
+-- 7.Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich,
+-- so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu của tất cả các loại 
+-- dịch vụ đã từng được khách hàng đặt phòng trong năm 2020 nhưng 
+-- chưa từng được khách hàng đặt phòng trong năm 2021.
+select s.id_service, s.service_name, s.area_service, s.max_people,s.rental_costs, ts.type_service_name
+from contract ctr
+join service s on ctr.id_service=s.id_service
+join type_service ts on s.id_type_service=ts.id_type_service
+where s.id_service not in(select id_service
+from contract
+ where year(contract_date)=2021)
+group by s.id_service;
+-- 8.Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
+-- cách 1
+select customer_name
+from customer
+group by customer_name;
+-- cách 2
+select distinct customer_name
+from customer;
+-- cách 3
+
+-- 9.Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi 
+-- tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng
+select month(ctr.contract_date) as month,
+count(ctr.id_customer) as quantity_customer
+from contract ctr
+where ctr.contract_date between '2021-01-01' and '2022-01-01'
+group by month
+order by month;
+-- 10.	Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm.
+ -- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, so_luong_dich_vu_di_kem 
+-- (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
+select ctr.id_contract, ctr.contract_date,ctr.contract_end_date,ctr.deposits,
+sum(dc.quantity) as number_service_free
+from contract ctr
+left join detail_contract dc on ctr.id_contract=dc.id_contract
+group by ctr.id_contract;

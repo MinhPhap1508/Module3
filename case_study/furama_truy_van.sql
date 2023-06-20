@@ -66,7 +66,11 @@ group by customer_name;
 select distinct customer_name
 from customer;
 -- cách 3
-
+select customer_name
+from customer
+union
+select customer_name
+from customer;
 -- 9.Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi 
 -- tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng
 select month(ctr.contract_date) as month,

@@ -33,22 +33,13 @@ from contract
 where contract_date between '2021-01-01' and '2021-06-31')
  group by ctr.id_contract;
  -- 13.Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng.
- -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
- select 	sf.id_service_free, sf.service_free_name, max(dc.quantity) as quantity_service_free
- from service_free sf
- join detail_contract dc on sf.id_service_free=dc.id_service_free
- join contract ctr on dc.id_contract=ctr.id_contract
- where dc.quantity in(
- select max(quantity)
- from detail_contract)
- group by sf.id_service_free;
- 
+ -- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau). 
  select sf.id_service_free, sf.service_free_name, sum(dc.quantity) as uses
  from service_free  sf
  join detail_contract dc on sf.id_service_free=dc.id_service_free
  group by sf.service_free_name, sf.id_service_free
  order by uses desc
- ;
+ limit 2;
  -- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
  -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung
  -- (được tính dựa trên việc count các ma_dich_vu_di_kem).
@@ -71,4 +62,15 @@ where contract_date between '2021-01-01' and '2021-06-31')
  -- 15.Hiển thi thông tin của tất cả nhân viên bao gồm
  -- ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi mới
  -- chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
+ select e.id_employee, e.employee_name, l.level_name, d.part_name, e.number_phone, e.address
+ from employee e 
+ join departement d on e.id_part=d.id_part
+ join level l on e.id_level=l.id_level
+ join contract ctr on e.id_employee=ctr.id_employee
+ where year(ctr.contract_date) between '2020-01-01' and '2021-31-12'
+ group by e.id_employee
+ having count(*) < 3
+ order by e.id_employee;
+ 
+ 
  

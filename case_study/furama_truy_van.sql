@@ -25,7 +25,7 @@ order by number_bookings;
  -- cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 select c.id_customer,customer_name,customer_type_name,contract.id_contract,s.service_name,contract.contract_date,contract.contract_end_date,
-s.rental_costs+dc.quantity*sf.price as `total_price`
+(s.rental_costs+dc.quantity*sf.price) as `total_price`
 from customer c
 left join customer_type ct on c.id_customer_type=ct.id_customer_type
 left join contract on c.id_customer=contract.id_customer

@@ -37,13 +37,10 @@ set foreign_key_checks=1;
 -- 19.	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
 set sql_safe_updates=0;
 update service_free sf
-join(
-select sf.id_service_free, sf.service_free_name
-from service_free sf
 join detail_contract dc on sf.id_service_free = dc.id_service_free
 join contract ctr on dc.id_contract=ctr.id_contract
-where dc.quantity > 10 and year(contract_date)='2020') sdc on sf.id_service_free=sdc.id_service_free
-set sf.price=sf.price*2;
+set sf.price=sf.price*2
+where dc.quantity > 10 and year(contract_date)='2020';
 set sql_safe_updates=1;
 select sf.service_free_name,sf.price
 from service_free sf;

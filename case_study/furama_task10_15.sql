@@ -70,7 +70,4 @@ where contract_date between '2021-01-01' and '2021-06-31')
  where year(ctr.contract_date) between '2020-01-01' and '2021-31-12'
  group by e.id_employee
  having count(*) < 3
- order by e.id_employee;
- 
- 
- 
+ order by e.id_employee; 

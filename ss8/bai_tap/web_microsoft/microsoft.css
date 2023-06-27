@@ -1,0 +1,56 @@
+#logo img{
+    max-inline-size: 100%;
+    padding-left: 40%;
+}
+h4{
+    padding-left: 10px;
+}
+#icon{
+    margin-right: 5%;
+}
+.row_background{
+    background-image: url("https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/surface-pro-9_multi-color_Pride-english?scl=1");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    width: 100%;
+}
+#text{
+    max-inline-size: 40%;
+    padding-top: 100px;
+    padding-left: 100px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.col-lg-2{
+    padding-left: 10px;
+}
+.row_link{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.col-lg-2 a{
+    color: blue;
+}
+.row_see_all a{
+    color: blue;
+}
+.row .col-lg-5 iframe{
+    max-inline-size: 100%;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.row_extra{
+    display: flex;
+    flex-wrap: wrap;
+}
+.col_right{
+    margin-left: 35px;
+}
+.row_extra{
+    margin-top: 30px;
+}

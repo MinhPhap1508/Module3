@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+
+h2{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+h5{
+    margin-bottom: 20px;
+}
+body{
+    background-image: url("https://img3.thuthuatphanmem.vn/uploads/2019/10/10/background-dong-don-gian_032848405.gif");
+background-repeat: no-repeat;
+    background-size: cover;
+}
+a:hover{
+    color: black;
+}

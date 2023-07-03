@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/currency_converter_jsp" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/currency_converter_jsp" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/list_customer" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/list_customer" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/simple_calculator" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/simple_calculator" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/thuc_hanh/simple_dictionary_jsp" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/thuc_hanh/simple_dictionary_jsp" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

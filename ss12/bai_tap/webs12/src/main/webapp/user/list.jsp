@@ -12,11 +12,11 @@
         <a href="/UserServlet?action=create">Add New User</a><br>
         <a href="/UserServlet?action=arrange">Arrange</a>
     </h2>
-    <p><a href="/UserServlet?action=search"></a> </p>
-<%--    <form action="/UserServlet?action=search">--%>
-<%--        <input type="search" name="search" placeholder="Enter the country">--%>
-<%--        <input type="submit" value="Search">--%>
-<%--    </form>--%>
+    <p><a href="/UserServlet?action=search">Search</a> </p>
+    <form action="/UserServlet?action=search" method="post">
+        <input type="text" name="search"  placeholder="Enter the country">
+        <input type="submit" value="Search"/>
+    </form>
 </center>
 <div align="center">
     <table border="1" cellpadding="5">

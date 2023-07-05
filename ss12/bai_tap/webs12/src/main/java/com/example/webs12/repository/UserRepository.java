@@ -13,7 +13,7 @@ public class UserRepository implements IUserRepository {
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
     private static final String ORDER_USER_BY_NAME = "select * from users order by name";
-    private static final String SELECT_USER_BY_COUNTRY = "select * from users where country like";
+    private static final String SELECT_USER_BY_COUNTRY = "select * from users where country like ?;";
 
     @Override
     public void insertUser(User user) throws SQLException {
@@ -92,13 +92,13 @@ public class UserRepository implements IUserRepository {
         Connection connection = BaseRepository.getConnection();
         PreparedStatement preparedStatement = null;
 
-            preparedStatement = connection.prepareStatement(UPDATE_USERS_SQL);
+        preparedStatement = connection.prepareStatement(UPDATE_USERS_SQL);
 
-            preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getCountry());
-            preparedStatement.setInt(4, user.getId());
-            rowUpdate = preparedStatement.executeUpdate() > 0;
+        preparedStatement.setString(1, user.getName());
+        preparedStatement.setString(2, user.getEmail());
+        preparedStatement.setString(3, user.getCountry());
+        preparedStatement.setInt(4, user.getId());
+        rowUpdate = preparedStatement.executeUpdate() > 0;
         return rowUpdate;
     }
 
@@ -107,9 +107,9 @@ public class UserRepository implements IUserRepository {
         List<User> userList = new ArrayList<>();
         Connection connection = BaseRepository.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs =statement.executeQuery(ORDER_USER_BY_NAME);
-        while (rs.next()){
-            userList.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email"),rs.getString("country") ));
+        ResultSet rs = statement.executeQuery(ORDER_USER_BY_NAME);
+        while (rs.next()) {
+            userList.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("country")));
         }
         return userList;
     }
@@ -119,15 +119,14 @@ public class UserRepository implements IUserRepository {
         List<User> userList = new ArrayList<>();
         Connection connection = BaseRepository.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_COUNTRY);
+        preparedStatement.setString(1, "%" + country + "%");
         ResultSet rs = preparedStatement.executeQuery();
-        while (rs.next()){
-            int id = rs.getInt("id");
+        while (rs.next()) {
             String name = rs.getString("name");
             String email = rs.getString("email");
-            userList.add(new User(id, name, email, country));
+            userList.add(new User(name, email, country));
         }
         connection.close();
-
         return userList;
     }
 

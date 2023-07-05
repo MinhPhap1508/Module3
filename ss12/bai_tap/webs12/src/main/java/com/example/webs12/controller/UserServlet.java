@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "/UserServlet")
@@ -40,29 +41,26 @@ public class UserServlet extends HttpServlet {
             case "arrange":
                 showArrange(request, response);
                 break;
-            case "search":
-                searchByCountry(request, response);
-                break;
             default:
                 listUser(request, response);
                 break;
         }
     }
 
-    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/search.jsp");
+//        try {
+//            dispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     private void showArrange(HttpServletRequest request, HttpServletResponse response) {
-        List<User> userList =null;
+        List<User> userList = null;
         try {
             userList = userService.arrange();
         } catch (SQLException e) {
@@ -122,10 +120,26 @@ public class UserServlet extends HttpServlet {
                 case "edit":
                     updateUser(request, response);
                     break;
+                case "search":
+                    searchCountry(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void searchCountry(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String searchCountry = request.getParameter("search");
+        List<User> userList = userService.searchByCountry(searchCountry);
+        RequestDispatcher dispatcher;
+        request.setAttribute("userList", userList);
+        if(userList.isEmpty()){
+            dispatcher = request.getRequestDispatcher("user/error-404.jsp");
+        }else {
+            dispatcher = request.getRequestDispatcher("user/search.jsp");
+        }
+        dispatcher.forward(request, response);
     }
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

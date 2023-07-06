@@ -46,19 +46,7 @@ public class UserServlet extends HttpServlet {
                 break;
         }
     }
-
-//    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) {
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/search.jsp");
-//        try {
-//            dispatcher.forward(request, response);
-//        } catch (ServletException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-
+    
     private void showArrange(HttpServletRequest request, HttpServletResponse response) {
         List<User> userList = null;
         try {

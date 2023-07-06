@@ -9,10 +9,10 @@ import java.util.List;
 public class UserRepository implements IUserRepository {
     private static final String INSERT_USERS_SQL = "INSERT INTO users (name, email, country) VALUES (?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
+    private static final String ORDER_USER_BY_NAME = "select * from users order by name";
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
-    private static final String ORDER_USER_BY_NAME = "select * from users order by name";
     private static final String SELECT_USER_BY_COUNTRY = "select * from users where country like ?;";
 
     @Override
@@ -25,6 +25,7 @@ public class UserRepository implements IUserRepository {
         preparedStatement.setString(3, user.getCountry());
         System.out.println(preparedStatement);
         preparedStatement.executeUpdate();
+        connection.close();
 
 
     }
@@ -50,6 +51,8 @@ public class UserRepository implements IUserRepository {
         return user;
     }
 
+
+
     @Override
     public List<User> selectAllUser() {
         List<User> users = new ArrayList<>();
@@ -67,9 +70,16 @@ public class UserRepository implements IUserRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return users;
     }
+
 
     @Override
     public boolean deleteUser(int id) {
@@ -82,9 +92,16 @@ public class UserRepository implements IUserRepository {
             rowDelete = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return rowDelete;
     }
+
 
     @Override
     public boolean updateUser(User user) throws SQLException {
@@ -99,6 +116,7 @@ public class UserRepository implements IUserRepository {
         preparedStatement.setString(3, user.getCountry());
         preparedStatement.setInt(4, user.getId());
         rowUpdate = preparedStatement.executeUpdate() > 0;
+        connection.close();
         return rowUpdate;
     }
 
@@ -111,6 +129,7 @@ public class UserRepository implements IUserRepository {
         while (rs.next()) {
             userList.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("country")));
         }
+        connection.close();
         return userList;
     }
 

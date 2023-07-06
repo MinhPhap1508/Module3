@@ -97,6 +97,7 @@ public class UserServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         User existingUser = userService.selectUser(id);
+        request.setAttribute("user", existingUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/user/edit.jsp");
         dispatcher.forward(request, response);
     }
@@ -134,9 +135,9 @@ public class UserServlet extends HttpServlet {
         List<User> userList = userService.searchByCountry(searchCountry);
         RequestDispatcher dispatcher;
         request.setAttribute("userList", userList);
-        if(userList.isEmpty()){
+        if (userList.isEmpty()) {
             dispatcher = request.getRequestDispatcher("user/error-404.jsp");
-        }else {
+        } else {
             dispatcher = request.getRequestDispatcher("user/search.jsp");
         }
         dispatcher.forward(request, response);
@@ -148,8 +149,8 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String country = request.getParameter("country");
 
-        User book = new User(id, name, email, country);
-        userService.updateUser(book);
+        User user = new User(id, name, email, country);
+        userService.updateUser(user);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/user/edit.jsp");
         dispatcher.forward(request, response);
     }

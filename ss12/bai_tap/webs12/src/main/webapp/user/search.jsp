@@ -12,12 +12,23 @@
     <title>Search</title>
 </head>
 <body>
-<p><a href="/UserServlet">Back to menu</a></p>
+<center>
+    <h1>User Management</h1>
+    <h2>
+        <a href="UserServlet?action=UserServlet">List All Users</a>
+    </h2>
+</center>
+<div align="center">
 <table border="1px">
+    <caption>
+        <h2>
+            Result
+        </h2>
+    </caption>
     <tr>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Country</td>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Country</th>
     </tr>
     <c:forEach var="user" items="${userList}">
         <tr>
@@ -27,5 +38,6 @@
         </tr>
     </c:forEach>
 </table>
+</div>
 </body>
 </html>

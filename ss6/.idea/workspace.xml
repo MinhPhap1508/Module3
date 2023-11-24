@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8a2beade-5df3-49ee-aa63-80da910e1540" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/controller/CashServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/model/Cash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/repository/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/repository/CashRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/repository/ICashRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/service/CashService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/java/com/example/demo/service/ICashService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/webapp/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Thi/demo/src/main/webapp/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../barber/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/module3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/module3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai_soan/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bai_soan/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../barber_shop/curlyhair1.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../barber_shop/fauxhaw1.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../barber_shop/mohican1.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../barber_shop/mohican2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../barber_shop/sidepart1.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../barber_shop/undercut_2.0.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/controller/ProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/repository/IProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/repository/IProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/service/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/java/com/example/java_web/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/webapp/product/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/webapp/product/search.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/webapp/product/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/webapp/product/update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/webapp/product/view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/bai_tap/java_web/src/main/webapp/product/view.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11/thuc_hanh/mvc/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11/thuc_hanh/mvc/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss12/bai_tap/webs12/src/main/java/com/example/webs12/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss12/bai_tap/webs12/src/main/java/com/example/webs12/controller/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss13_callableStatement/bai_tap/user/src/main/java/com/example/webs12/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss13_callableStatement/bai_tap/user/src/main/java/com/example/webs12/repository/UserRepository.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Tv88lzpAq5sXU1HSAPYunclVHk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Codegym/module3/ss6",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8a2beade-5df3-49ee-aa63-80da910e1540" name="Changes" comment="" />
+      <created>1691912036771</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691912036771</updated>
+      <workItem from="1691912038275" duration="34000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -15,6 +15,11 @@
 <p>
     <a href="/ProductServlet">Trở về trang chính</a>
 </p>
+<p>
+    <c:if test="${msg !=null}">
+        <span class="msg">${msg}</span>
+    </c:if>
+</p>
 <form action="/ProductServlet?action=update&id=${product.getId()}" method="post">
     <fieldset>
         <legend>Thông tin sản phẩm</legend>

@@ -7,12 +7,12 @@ import java.util.List;
 public interface IProductService {
     List<Product> showProduct();
 
-    void addProduct(Product product);
+    void addProduct(String name, double price, String description, String producer);
 
     Product findById(int id);
 
     void updateProduct(int id, Product product);
 
     void removeProduct(int id);
-    void searchProduct(String name);
+    List<Product> searchProduct(String name);
 }

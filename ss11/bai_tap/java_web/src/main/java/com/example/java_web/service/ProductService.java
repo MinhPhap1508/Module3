@@ -15,9 +15,16 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void addProduct(Product product) {
-        productRepository.addProduct(product);
+    public void addProduct(String name, double price, String description, String producer) {
+        int id;
+        for (id = 1; id <=productRepository.showProduct().size()+1 ; id++) {
+            Product product = productRepository.findById(id);
+            if(product==null)
+                break;
+        }
+        productRepository.addProduct(new Product(id, name, price,description, producer));
     }
+
 
     @Override
     public Product findById(int id) {
@@ -35,8 +42,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public void searchProduct(String name) {
-        productRepository.getByName(name);
+    public List<Product> searchProduct(String name) {
+        return productRepository.searchProduct(name);
     }
 
 

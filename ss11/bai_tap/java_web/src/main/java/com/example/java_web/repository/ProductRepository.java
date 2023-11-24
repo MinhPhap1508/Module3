@@ -27,13 +27,14 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public void getByName(String name) {
-
-        for (Product p :new ArrayList<>(productMap.values())) {
-            if (p.getName().contains(name)) {
-                System.out.println(p);
+    public List<Product> searchProduct(String name) {
+        List<Product> productList = new ArrayList<>();
+        for (Product p : showProduct()) {
+            if (p.getName().contains(name)){
+                productList.add(p);
             }
         }
+        return productList;
     }
 
 

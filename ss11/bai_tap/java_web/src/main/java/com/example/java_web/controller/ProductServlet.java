@@ -27,14 +27,32 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "update":
                 showUpdateForm(request, response);
+                break;
             case "delete":
                 showDeleteForm(request, response);
                 break;
             case "search":
                 searchProduct(request, response);
+                break;
+            case "view":
+                viewProduct(request, response);
+                break;
             default:
                 listProduct(request, response);
                 break;
+        }
+    }
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        RequestDispatcher dispatcher;
+        if (product == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else {
+            request.setAttribute("product", product);
+            dispatcher = request.getRequestDispatcher("product/view.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
@@ -117,8 +135,9 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 deleteProduct(request, response);
                 break;
-            case "searchProduct":
+            case "search":
                 searchProductName(request, response);
+                break;
             default:
                 listProduct(request, response);
         }
@@ -126,6 +145,17 @@ public class ProductServlet extends HttpServlet {
 
     private void searchProductName(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("search");
+        List<Product> products = productService.searchProduct(name);
+        RequestDispatcher dispatcher;
+        request.setAttribute("products", products);
+        dispatcher = request.getRequestDispatcher("product/search.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -164,6 +194,7 @@ public class ProductServlet extends HttpServlet {
             product.setProducer(producer);
             this.productService.updateProduct(id, product);
             request.setAttribute("product", product);
+            request.setAttribute("msg", "Thay doi thanh cong");
             dispatcher = request.getRequestDispatcher("/product/update.jsp");
         }
         try {
@@ -180,11 +211,9 @@ public class ProductServlet extends HttpServlet {
         double price = Double.parseDouble(request.getParameter("price"));
         String description = request.getParameter("description");
         String producer = request.getParameter("producer");
-        int id = (int) (Math.random() * 10000);
-        Product product = new Product(id, name, price, description, producer);
-        this.productService.addProduct(product);
+        this.productService.addProduct(name, price, description, producer);
         try {
-            response.sendRedirect("/ProductServlet?msg=them%20moi%20thanh%20cong");
+            response.sendRedirect("/ProductServlet?msg=successfully%20added%20new");
         } catch (IOException e) {
             e.printStackTrace();
         }

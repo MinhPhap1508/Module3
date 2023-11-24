@@ -46,7 +46,7 @@ public class UserServlet extends HttpServlet {
                 break;
         }
     }
-    
+
     private void showArrange(HttpServletRequest request, HttpServletResponse response) {
         List<User> userList = null;
         try {
